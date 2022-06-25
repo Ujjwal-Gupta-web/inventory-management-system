@@ -1,0 +1,86 @@
+**User**
+- Login/Signup
+- Edit personal details
+- Edit password (can change directly) (/update_password)
+- Forget Password 
+ 	- use nodemailer to send an otp and if the otp is verified then the user can set new password (/forget_password)
+	- check if the new pass is same as older or not
+
+
+**Category**
+- Create
+- Update
+- Delete (all products related to it will also be deleted)
+- GET_ALL_CATEGORIES
+
+**Products**
+- Create a product
+	- a product will be linked to a category_id
+- Delete
+- Update
+
+
+**UI**
+- index page will be the login/signup page page
+After Login
+Navbar
+Products , NAME(onClick user Dashboard gets opened) , Logout
+Create Category, Add Product
+Select Category to see the products
+A, B, C .............
+- onClicking on a Category all the items of the category wll be fetched on the same page with (pagination)(if time permits)
+		- Edit and delete option will get displayed for this category also
+- onEach product the details will be visible nice and clear
+	- edit, add items, remove items and delete button will be available on each product
+
+
+
+**Models**
+- User
+	- name (string,req)
+	- company name (string,req)
+	- email (string, req, email validator - mongodb)
+	- password (string, req)
+	- otp (string)
+- Category
+	- Category Name (string, req)
+	- user_id (id, req)
+- Product
+	- Product Name (String, req)
+	- Quantity (Integer, req)
+	- Price (Float, req)
+	- Category_id  (id, req)
+	- user_id  (id, req)
+
+
+
+ **Middlewares**
+- verifyToken
+
+******APIS******
+
+**User**
+LOGIN 				base/user/login				POST			
+SIGNUP 				base/user/signup			POST	
+UPDATE 				base/user/				PUT			verifyToken Required
+UPDATE_PASSWORD 		base/user/update_passwrod		PUT			verifyToken Required
+FORGOT_PASSWORD 		base/user/forgot_passwrod		POST			..
+verify_otp	 		base/user/forgot_passwrod		POST			..
+
+**Category**
+GET_CATEGORIES			base/category/				GET			verifyToken Required
+GET_CATEGORY_BY_ID		base/category/:id			GET			verifyToken Required
+ADD_CATEGORY			base/category/				POST			verifyToken Required
+UPDATE_CATEGORY			base/Category				PUT			verifyToken Required
+DELETE_CATEGORY			base/category/:id			DELETE			verifyToken Required
+
+
+**Product**
+GET_PRODUCTS					base/product/				GET			verifyToken Required
+GET_PRODUCT_BY_ID				base/product/:id			GET			verifyToken Required
+GET_PRODUCT_BY_CATEGORY_ID		base/product/:id			GET			verifyToken Required
+ADD_PRODUCT						base/product/				POST			verifyToken Required
+UPDATE_PRODUCT					base/product				PUT			verifyToken Required
+INCREASE_QUANTITY				base/product/incre			PUT			verifyToken Required
+DECREASE_QUANTITY				base/product/decre			PUT			verifyToken Required
+REMOVE_PRODUCT					base/product/:id			DELETE			verifyToken Required

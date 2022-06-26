@@ -4,7 +4,7 @@ import { login_user } from '../controllers/user';
 
 const Login = () => {
 
-  document.body.style.backgroundColor="#595dcff2";
+  
   const navigate = useNavigate();
 
   let [email, setEmail] = useState("");
@@ -15,6 +15,8 @@ const Login = () => {
       navigate("/");
     }
   }, [])
+
+  document.body.style.backgroundColor="#595dcff2";
 
   const handle_login = () => {
     let obj = {

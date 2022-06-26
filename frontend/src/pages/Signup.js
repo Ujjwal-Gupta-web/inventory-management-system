@@ -14,16 +14,17 @@ function validateEmail(mail)
 
 const Signup = () => {
 
-  document.body.style.backgroundColor="#595dcff2";
-
+  
   const navigate=useNavigate();
-
+  
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      navigate("/host_event");
+      navigate("/");
     }
   }, [])
-
+  
+  document.body.style.backgroundColor="#595dcff2";
+  
   let [name,setName]=useState("")
   let [company_name,setCompanyName]=useState("")
   let [email,setEmail]=useState("")

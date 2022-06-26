@@ -20,7 +20,7 @@ const User = new Schema({
     password: {
         type: "String",
         required: [true, "Please Enter the password"],
-        minlength: [6, "The password should atleast 6 characters"],
+        minlength: [4, "The password should atleast 4 characters"],
     },
     otp: String
 });

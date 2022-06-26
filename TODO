@@ -1,10 +1,9 @@
 TODO
-- add product, edit product
-- CUD category
-- categoryWise product page/:category_id
-- product page/:id
+- edit product
+- edit user details
 - test
-- user APIS (update,forgot password wala part is left)
+- update_password controllers and thunder client
+- forget_password controllers and thunder client
 - test
 
 DONE

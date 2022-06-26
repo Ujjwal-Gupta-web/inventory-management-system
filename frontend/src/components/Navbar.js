@@ -12,10 +12,10 @@ const Navbar = () => {
         <div><b>Inventory Management System</b></div>
         <div className='d-flex align-items-center justify-content-between'>
           <div className='mx-2'>{user.name}</div>
-          <div className='mx-2 text-danger'>Logout</div>
+          <div className='mx-2 text-danger' style={{cursor:"pointer"}} onClick={()=>localStorage.removeItem("user")}>Logout</div>
         </div>
     </div>
-    <div className='my-1 text-center fw-bold  '>{user.company_name}</div>
+    <div className='my-1 text-center fw-bold container '>{user.company_name}</div>
     </>
   )
 }

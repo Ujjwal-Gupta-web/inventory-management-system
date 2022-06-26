@@ -72,7 +72,8 @@ const Home = () => {
 
                   <div class="mb-3">
                     <label for="product_category_id" class="form-label">Category</label>
-                    <select id="product_category_id" class="form-control" >
+                    <select id="product_category_id" class="form-control" type="text">
+                      <option value={""}>Select</option>
                       {
 
                         categories.map(category =>
@@ -157,7 +158,8 @@ const Home = () => {
 
                 <div class="mb-3">
                   <label for="edit_category_id" class="form-label">Category</label>
-                  <select id="edit_category_id" class="form-control" >
+                  <select id="edit_category_id" class="form-control" type="text">
+                  <option value={""}>Select</option>
                     {
 
                       categories.map(category =>

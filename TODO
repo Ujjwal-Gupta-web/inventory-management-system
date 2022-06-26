@@ -1,6 +1,9 @@
 TODO
+- make ui of all the pages
+- make all the pages functional
+- test
 - user APIS (update,forgot password wala part is left)
-- Frontend setup
+- test
 
 DONE
 models done
@@ -10,3 +13,4 @@ product APIS
 mongodb cloud setup
 thunder client setup
 testing of APIS
+populate controllers

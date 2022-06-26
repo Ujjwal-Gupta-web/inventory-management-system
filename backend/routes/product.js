@@ -37,10 +37,11 @@ router.get("/:id", verifyToken, async (req, res) => {
 })
 
 
-router.get("/:category_id", verifyToken, async (req, res) => {
+router.get("/category/:category_id", verifyToken, async (req, res) => {
     try {
         let category_id = req.params.category_id;
         const products = await Product.find({ category_id, user_id: req.body.decoded.id });
+
         if (products.length > 0) {
             let obj = products;
             return res.json({ "tag": true, "message": obj });
@@ -73,7 +74,7 @@ router.post("/", verifyToken, async (req, res) => {
                 return res.json({ "message": "try again", "tag": false })
             }
             //console.log(document);
-            return res.json({ "message": "Category Added", tag: true })
+            return res.json({ "message": "Product Added", tag: true })
         })
     }
     catch (error) {
@@ -114,11 +115,11 @@ router.put("/", verifyToken, async (req, res) => {
 
 router.put("/increment_quantity", verifyToken, async (req, res) => {
     try {
-        let {_id,increment}=req.body;
+        let { _id, increment } = req.body;
         let product = await Product.findOne({ _id, user_id: req.body.decoded.id });
 
         product.quantity += increment;
-    
+
         product.save(function (error, document) {
             if (error) {
                 console.error(error)
@@ -136,14 +137,14 @@ router.put("/increment_quantity", verifyToken, async (req, res) => {
 
 router.put("/decrement_quantity", verifyToken, async (req, res) => {
     try {
-        let {_id,decrement}=req.body;
+        let { _id, decrement } = req.body;
         let product = await Product.findOne({ _id, user_id: req.body.decoded.id });
 
         product.quantity -= decrement;
-        if(product.quantity<0){
+        if (product.quantity < 0) {
             return res.json({ "message": "Product Quantity Cannot be negative", tag: false })
         }
-    
+
         product.save(function (error, document) {
             if (error) {
                 console.error(error)
@@ -164,7 +165,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
     try {
         let _id = req.params.id;
         Product.deleteOne({ _id, user_id: req.body.decoded.id }).then(function () {
-            return res.json({ "message": "Category Deleted", tag: true })
+            return res.json({ "message": "Product Deleted", tag: true })
         }).catch(function (error) {
             return res.json({ "message": "try again", "tag": false })
         });

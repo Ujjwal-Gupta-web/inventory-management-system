@@ -12,11 +12,11 @@ const Product = new Schema({
         ref: "User"
     },
     quantity:{
-        type: Integer,
+        type: Number,
         required: true,
     },
     price:{
-        type: Float,
+        type: Number,
         required: true,
     },
     category_id:{

@@ -1,8 +1,5 @@
 TODO
 - user APIS (update,forgot password wala part is left)
-- mongodb cloud setup
-- thunder client setup
-- testing of APIS
 - Frontend setup
 
 DONE
@@ -10,3 +7,6 @@ models done
 middleware (token headers mein pass krana hai)
 category APIS
 product APIS
+mongodb cloud setup
+thunder client setup
+testing of APIS

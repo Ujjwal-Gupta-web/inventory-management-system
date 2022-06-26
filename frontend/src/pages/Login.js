@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import { login_user } from '../controllers/user';
+import { forgot_password, login_user } from '../controllers/user';
 
 const Login = () => {
-
-  
+    
   const navigate = useNavigate();
 
   let [email, setEmail] = useState("");
@@ -52,7 +51,17 @@ const Login = () => {
           <label for="login_password" class="form-label">Password</label>
           <input type="password" class="form-control" value={password} onChange={(e) => setPassword(e.target.value)} id="login_password" />
         </div>
-        <div className='text-muted my-2 fs-7'>Forgot Password ? <Link to="/">Click here</Link></div>
+        <div className='text-muted my-2 fs-7'>Forgot Password ? <span
+        onClick={()=>{
+          if(validateEmail(email)){
+            forgot_password({email}).then(data=>alert(data.message));
+          }
+          else{
+            alert("Please enter the email")
+            return;
+          }
+        }}
+        >Click here</span></div>
         <button onClick={handle_login} class="btn btn-secondary">Login</button>
       </div>
     </>
@@ -60,3 +69,12 @@ const Login = () => {
 }
 
 export default Login
+
+function validateEmail(mail) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (true)
+  }
+    return (false)
+}

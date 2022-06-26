@@ -104,7 +104,7 @@ const Home = () => {
                     }
                     add_product(obj).then(data => { alert(data.message); window.location.reload(); })
                   }}
-                >Save changes</button>
+                >Add</button>
               </div>
             </div>
           </div>
@@ -129,17 +129,17 @@ const Home = () => {
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary"
                   onClick={() => {
-                    let category_name = document.getElementsById("category_name").value;
+                    let category_name = document.getElementById("category_name").value;
                     if (category_name === "") {
                       alert("please fill all the required details");
                       return;
                     }
                     let obj = {
-                      category_name
+                      name:category_name
                     }
-                    add_category(obj).then(data => alert(data.message));
+                    add_category(obj).then(data => {alert(data.message); window.location.reload();});
                   }}
-                >Save changes</button>
+                >Add</button>
               </div>
             </div>
           </div>

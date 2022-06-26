@@ -20,13 +20,13 @@ const Category = () => {
   let [categoryName,setCategoryName]=useState("");
 
   useEffect(()=>{
+    get_category_by_id({_id:category_id}).then(data=>setCategoryName(data.message.name));
     get_product_by_category_id({category_id:category_id})
     .then(data=>{
       console.log(data)
       if(data.tag){
         console.log(data);
         setProducts(data.message);
-        get_category_by_id({_id:category_id}).then(data=>setCategoryName(data.message.name));
       }
     })
   },[])

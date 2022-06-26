@@ -49,3 +49,28 @@ export const update_user = async (obj) => {
     const ans = await res.json();
     return ans;
 };
+
+export const update_password = async (obj) => {
+    const res = await fetch(`${base}/user/change_password`, {
+      method: "PUT",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json",
+        "token":localStorage.getItem("user")
+      },
+    });
+    const ans = await res.json();
+    return ans;
+};
+
+export const forgot_password = async (obj) => {
+    const res = await fetch(`${base}/user/forgot_password`, {
+      method: "PUT",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+    const ans = await res.json();
+    return ans;
+};

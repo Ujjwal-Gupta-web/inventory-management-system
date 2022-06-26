@@ -105,9 +105,8 @@ router.put("/change_password", verifyToken, async (req, res) => {
         let { new_password } = req.body;
         let user = await User.findOne({ _id: req.body.decoded.id });
 
-        bcrypt.compare(new_password, result.password, function (err, hashed) {
+        bcrypt.compare(new_password, user.password, function (err, hashed) {
             if (hashed === true) {
-                const token = jwt.sign({ id: result._id }, process.env.SECRET_KEY);
                 return res.json({ "message": "New Password cannot be same as old password", "tag": false })
             }
             else {
@@ -118,7 +117,8 @@ router.put("/change_password", verifyToken, async (req, res) => {
                             return res.json({ "message": "Something went wrong", "tag": false })
                         }
                         else {
-                            return res.json({ "message": "Password updated", "tag": false })
+                            return res.json({ "message": "Password updated", "tag": true })
+
                         }
                     });
             }
@@ -133,16 +133,16 @@ router.put("/change_password", verifyToken, async (req, res) => {
 router.put("/forgot_password", async (req, res) => {
     try {
         let { email } = req.body;
-        let new_password = Math.floor(1000 + Math.random() * 9000);
+        let new_password = `${Math.floor(1000 + Math.random() * 9000)}`;
         var hash = bcrypt.hashSync(new_password, 8);
-        send_email(email, "Your new password is set by us", `Login with the given password\n${new_password}`);
+        send_email(email, "Your new password is set by us", `Login with the given password - ${new_password}`);
         User.updateOne({ email },
             { password: hash }, function (err, docs) {
                 if (err) {
                     return res.json({ "message": "Something went wrong", "tag": false })
                 }
                 else {
-                    return res.json({ "message": "Password updated", "tag": false })
+                    return res.json({ "message": "Check email", "tag": true })
                 }
             })
     }

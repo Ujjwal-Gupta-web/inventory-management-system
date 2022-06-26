@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-dependencies":"npm install",
+    "heroku-postbuild":"npm run install-dependencies",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

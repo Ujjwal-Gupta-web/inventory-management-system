@@ -6,28 +6,29 @@ import { add_product } from '../controllers/product'
 
 const Home = () => {
 
-  const navigate=useNavigate();
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (!localStorage.getItem("user")) {
       navigate("/login");
+    }
+    else {
+      get_categories().then(data => {
+        console.log(data)
+        if (!data.tag) {
+          alert(data.message);
+        }
+        else {
+          setCategories(data.message)
+        }
+      }
+      )
     }
   }, [])
 
   let [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    get_categories().then(data => {
-      console.log(data)
-      if (!data.tag) {
-        alert(data.message);
-      }
-      else {
-        setCategories(data.message)
-      }
-    }
-    )
-  }, [])
+
   return (
     <>
       <Navbar />
@@ -136,9 +137,9 @@ const Home = () => {
                       return;
                     }
                     let obj = {
-                      name:category_name
+                      name: category_name
                     }
-                    add_category(obj).then(data => {alert(data.message); window.location.reload();});
+                    add_category(obj).then(data => { alert(data.message); window.location.reload(); });
                   }}
                 >Add</button>
               </div>
@@ -159,7 +160,7 @@ const Home = () => {
                 <div class="mb-3">
                   <label for="edit_category_id" class="form-label">Category</label>
                   <select id="edit_category_id" class="form-control" type="text">
-                  <option value={""}>Select</option>
+                    <option value={""}>Select</option>
                     {
 
                       categories.map(category =>

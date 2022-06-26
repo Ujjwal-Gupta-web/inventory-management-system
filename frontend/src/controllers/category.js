@@ -1,4 +1,4 @@
-const base = "http://localhost:5000";
+const base = "https://api-inventory-management.herokuapp.com";
 
 export const get_categories = async () => {
     const res = await fetch(`${base}/category/`, {

@@ -163,7 +163,7 @@ async function send_email(to, subject, message) {
 
 
     let details = {
-        from: "tech.ujjwal.99@gmail.com",
+        from: process.env.myEmail,
         to: to,
         subject: subject,
         text: message

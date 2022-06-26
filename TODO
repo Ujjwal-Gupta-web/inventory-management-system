@@ -1,6 +1,8 @@
 TODO
-- make ui of all the pages
-- make all the pages functional
+- add product, edit product
+- CUD category
+- categoryWise product page/:category_id
+- product page/:id
 - test
 - user APIS (update,forgot password wala part is left)
 - test

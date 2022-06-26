@@ -12,7 +12,7 @@ const Login = () => {
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      navigate("/home");
+      navigate("/");
     }
   }, [])
 
@@ -25,7 +25,7 @@ const Login = () => {
       alert(data.message);
       if (data.tag) {
         localStorage.setItem("user", data.token);
-        navigate("/host_event");
+        navigate("/");
       }
       else {
         setEmail("");
@@ -36,6 +36,9 @@ const Login = () => {
 
   return (
     <>
+    <div className='p-3 text-center' style={{background:"#e9e9e9"}}>
+        <b>Inventory Management System</b>
+    </div>
       <div className='container border border-lg p-4 mt-5' style={{ maxWidth: "300px", background:"#e9e9e9" }}>
         <h3 className='mb-3'>Login</h3>
         <div className='text-muted my-1 fs-7'>Not registered ? <Link to="/signup">Register here</Link></div>

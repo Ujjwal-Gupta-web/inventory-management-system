@@ -5,7 +5,7 @@ export const get_products = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -17,7 +17,7 @@ export const get_product_by_id = async (obj) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -25,11 +25,11 @@ export const get_product_by_id = async (obj) => {
 };
 
 export const get_product_by_category_id = async (obj) => {
-    const res = await fetch(`${base}/product/category/${obj._id}`, {
+    const res = await fetch(`${base}/product/category/${obj.category_id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -42,7 +42,7 @@ export const add_product = async (obj) => {
       body:JSON.stringify(obj),
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -55,7 +55,7 @@ export const update_product = async (obj) => {
       body:JSON.stringify(obj),
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -68,7 +68,7 @@ export const increment_product_quantity = async (obj) => {
       body:JSON.stringify(obj),
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -81,7 +81,7 @@ export const decrement_product_quantity = async (obj) => {
       body:JSON.stringify(obj),
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -93,7 +93,7 @@ export const delete_product = async (obj) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();

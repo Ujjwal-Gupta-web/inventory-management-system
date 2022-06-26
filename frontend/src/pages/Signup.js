@@ -71,6 +71,9 @@ const Signup = () => {
 
   return (
     <>
+    <div className='p-3 text-center' style={{background:"#e9e9e9"}}>
+    <b>Inventory Management System</b>
+    </div>
     <div className='container border border-lg p-4 mt-5' style={{background:"#e9e9e9"}}>
       <h3 className='mb-3'>Signup</h3>
       <div className='text-muted my-1 fs-7'>Already registered ? <Link to="/login">Login here</Link></div>

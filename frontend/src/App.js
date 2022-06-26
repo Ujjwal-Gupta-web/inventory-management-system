@@ -1,19 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home"
-import Products from "./pages/Products"
+import Product from "./pages/Product"
+import Category from "./pages/Category"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
-
-import Navbar from "./components/Navbar"
 
 function App() {
   return (
     <>
        <BrowserRouter>
-       {/* <Navbar/> */}
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/products" element={<Products />} />
+          <Route exact path="/product/:id" element={<Product />} />
+          <Route exact path="/category/:id" element={<Category />} />
           
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />

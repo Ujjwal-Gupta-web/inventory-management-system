@@ -5,7 +5,7 @@ export const get_categories = async () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -17,7 +17,7 @@ export const get_category_by_id = async (obj) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -30,7 +30,7 @@ export const add_category = async (obj) => {
       body:JSON.stringify(obj),
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -43,7 +43,7 @@ export const update_category = async (obj) => {
       body:JSON.stringify(obj),
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();
@@ -55,7 +55,7 @@ export const delete_category = async (obj) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();

@@ -1,5 +1,18 @@
 const base = "http://localhost:5000";
 
+
+export const get_user = async () => {
+  const res = await fetch(`${base}/user/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "token":localStorage.getItem("user")
+    },
+  });
+  const ans = await res.json();
+  return ans;
+};
+
 export const login_user = async (obj) => {
     const res = await fetch(`${base}/user/login`, {
       method: "POST",
@@ -30,7 +43,7 @@ export const update_user = async (obj) => {
       body: JSON.stringify(obj),
       headers: {
         "Content-Type": "application/json",
-        "token":localStorage.getItem("token")
+        "token":localStorage.getItem("user")
       },
     });
     const ans = await res.json();

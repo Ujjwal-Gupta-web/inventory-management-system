@@ -8,6 +8,16 @@ const User = require("../models/User");
 
 const verifyToken=require("../middlewares/verifyToken");
 
+router.get("/",verifyToken, async (req, res) => {
+    try {
+        let user=await User.findOne({_id:req.body.decoded.id}).select("-password");
+        return res.json({"message":user,tag:true})
+    }
+    catch (error) {
+        return res.json({ "message": error, "tag": false })
+    }
+})
+
 router.post("/login", async (req, res) => {
 
     const obj = req.body;
